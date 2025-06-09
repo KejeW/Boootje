@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎂🎂 Verjaardagsverhaal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(135deg, #ffe3ec 0%, #f9f0ff 100%);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 2; }
+    }
+
+    #container {
+      background: rgb(255, 252, 255);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      text-align: center;
+    }
+
+    #story {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .choice-button {
+      display: block;
+      margin: 1rem auto;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #ff69b4;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    .choice-button:hover {
+      background-color: #ff1493;
+    }
+  </style>
+  
+</head>
+<body>
+  <div id="container">
+    <div id="story"></div>
+    <div id="choices"></div>
+  </div>
+
+  <div id="effect"></div>
+  <script>
+    const verhaal = {
+      start: {
+        tekst: "Hoi Bootje. Welkom in je eigen MAFS wereld. Je gaat trouwen!",
+        keuzes: [
+          { tekst: "OMG IK GA TROUWEN!!!!", volgende: "verder" },
+        ]
+      },
+      verder: {
+        tekst: "Je zal vast benieuwd zijn wat voor man er straks voor jou klaar staat. Als het maar niet iemand is zoals...",
+        keuzes: [
+          { tekst: "Domme Olof", volgende: "Olof" },
+          { tekst: "Sluwe Dennis", volgende: "Dennis" },
+          { tekst: "Spraakzame Giovanni", volgende: "Giovanni" },
+          { tekst: "Sarath en z'n konijn", volgende: "Sarath" },
+      ]
+        },
+
+      Olof: {
+        tekst: "Oh nee, Olof moet je niet willen nee. Je verdient beter, dus laten we dat regelen. Ik denk dat jij maar eens een jurk moet uitzoeken!",
+        keuzes: [
+          { tekst: "Klinkt als een goed plan, op naar onze enige echte housewife van het zuiden", volgende: "jurk" }
+        ]
+      },
+      Dennis: {
+        tekst: "Jeetje, Dennis is echt een sluwe vos. Maar goed, je moet toch een jurk hebben. Laten we naar de winkel gaan!",
+        keuzes: [
+            { tekst: "Ja, laten we dat maar doen en hopen dat mijn man een lieverd is (en blijft). Op naar onze enige echte housewife van het zuiden voor een prachtige jurk.", volgende: "jurk" }
+        ]
+      },
+      Giovanni: {
+        tekst: "Zo erg is Giovanni nou ook weer niet, maar ik denk dat jij wel gek zou woorden van zijn spraakgebrek. Laten we snel een jurk gaan uitzoeken!",
+        keuzes: [
+          { tekst: "Yes, laten we gaan naar onze enige echte housewife van het zuiden!", volgende: "jurk" }
+        ]
+      },
+      Sarath: {
+        tekst: "Trouw nog liever met die konijn dan met Sarath. Maar goed, ik heb wel een jurk nodig. Laten we snel naar de winkel gaan!",
+        keuzes: [
+            { tekst: "EXACT, laten we gaan naar onze enige echte housewife van het zuiden!", volgende: "jurk" }
+            ]
+      },
+
+        jurk: {
+            tekst: "Wat voor jurk ga je kiezen? Je hebt een aantal opties, maar je moet wel snel beslissen want de tijd dringt!",
+            keuzes: [
+                { tekst: "Ik wil een jurk met gepofte mouwen!", volgende: "cadeaus" },
+                { tekst: "Ik wil de oude trouwjurk van Annie aan... die is prachtig en extra bijzonder", volgende: "cadeaus" },
+                { tekst: "Ik wil geen jurk aan, maar mijn denim pakje!", volgende: "cadeaus" }
+            ]
+        },
+        cadeaus: {
+            tekst: "Leuke outfit hoor Bobslay. Nu is het tijd om het cadeautje van je aanstaande te openen. Kijk eens, je mag kiezen uit een aantal cadeaus die hij voor je heeft gekocht. Wat ga je kiezen?",
+            keuzes: [
+                { tekst: "Een pakketje van een leuke boutique!", volgende: "boutique" },
+                { tekst: "Een shirt voor arm", volgende: "armshirt" },
+                { tekst: "Een ander mysterieus item...", volgende: "kleding" }
+            ]
+        },
+      boutique: {
+        tekst: "Een goede keuze. Rustig van start, eens kijken of deze vent wat leuks wist te scoren...!",
+        keuzes: [
+          { tekst: "Oh GEWELDIG, ik wil direct nog een cadeau openen! MEER MEER MEEEER.", volgende: "extra_boutique" },
+          { tekst: "Ik vind het prachtig, máár ik bewaar de andere cadeaus nog even voor later. Tijd voor die bruiloft!!", volgende: "bachelor" },
+        ]
+        },
+        armshirt: {
+        tekst: "Natuurlijk kies je voor het shirt van arm, want hij betekent alles voor je. Hopelijk past ie wel, want hij heeft een beetje een moeilijke maat. Maar goed, je hebt nog meer cadeaus om uit te pakken!",
+        keuzes: [
+          { tekst: "WOAHH dikke designer trouwens, dit shirt voor armpje. Dit belooft veel goeds. Ik wil direct nog een cadeau openen!", volgende: "extra_arm" },
+          { tekst: "Leuk persoonlijk shirt, goede eerste indruk van deze jongeman. Ik vind het voor nu wel prima, ik bewaar de andere cadeaus voor later. Tijd voor die bruiloft!!", volgende: "bachelor" },
+        ]
+      },
+        kleding: {
+            tekst: "Nee, dit is niet zomaar een kledingstuk. Deze wilde je al heel lang hebben, hij weet ook precies wat je leuk vindt. Zo lief van hem! ",
+            keuzes: [
+                { tekst: "Hoe kan ik na dit cadeau verder.. ik moet meer. Ik wil direct nog een cadeau openen!", volgende: "extra_kleding" },
+                { tekst: "Ik vind het prachtig, maar ik wil hem gewoon ZSM ontmoeten! Ik bewaar de andere cadeaus voor later. Tijd voor die bruiloft!!", volgende: "bachelor" },
+            ]
+        },
+        bachelor: {
+            tekst: "Ik had niet verwacht dat je niet meteen nog een cadeau zou openen... goed gedaan hoor. 3x raden waar het nu tijd voor is... je bachelorette PARTY!.", 
+            keuzes: [
+                { tekst: "We gaan allemaal in matching outfits door de stad lopen met beschamende t-shirts. Vervolgens gaan we karaoke zingen en twerken net als Marcella!", volgende: "Marcella" },
+                { tekst: "Doe niet zo gek, ik wil lekker met mama, papa, luna, milan, tony en arm op de bank zitten. Kijken naar b&b vol liefde met een bak mammoet olijven en een zak chips.", volgende: "bank" },
+                { tekst: "Voor mijn bachelorette part wil ik met al mijn HEMA collega's tompouce eten en baby kleertjes vouwen in de Kinkerstraat", volgende: "hema" },
+                { tekst: "Samen met mijn vrienden doe ik een Japanese cooking class, zodat ik als een echte Japanner sushi kan bouwen voor mijn man later", volgende: "sushi" },
+                { tekst: "Ik ga samen met mijn fashion queens Mama, Luna en Milou shoppen en langs allemaal leuke hippe winkeltjes in Amsterdam. Onderweg maken we even een foto van de 9 straatjes voor Henk, dit is echt een hidden gem in Amsterdam!"  , volgende: "milou" },
+            ]
+        },
+      extra_boutique: {
+        tekst: "Oke Oke, je wilt meteen nog meer cadeaus uitpakken. Waar ga je nu voor kiezen?",
+        keuzes: [
+          { tekst: "Armpjes shirt natuurlijk!! My son needs it", volgende: "armshirt2" },
+          { tekst: "Ik ben toch heel benieuwd naar dat andere grotere pakketje..", volgende: "kleding2" },
+        ]
+      },
+        extra_arm: {
+            tekst: "Na deze sentimentale keuze ben je toe aan nog een cadeau, wat ga je nu kiezen?",
+            keuzes: [
+            { tekst: "KOM MAAR DOOR met dat mysterieuze pakket... ik tril helemaal van enthousiasme.", volgende: "kleding2" },
+            { tekst: "Ik blijf van spulletjes houden, geef me dat cadeau van die fantastische winkel.", volgende: "boutique2" },
+            ]
+        },
+      extra_kleding: {     
+        tekst: "Die hadden we wel zien aankomen, jij kan nooit wachten met cadeaus. Nou goed, je kan je dus echt niet inhouden om nu nog een cadeau uit te pakken. Dus kies je...",
+        keuzes: [
+          { tekst: "Het t-shirt voor Armpje. Hij is echt toe aan een nieuw shirt, kom maar jongen. We gaan het regelen", volgende: "armshirt2" },
+          { tekst: "Het cadeautje van de boutique, ik ben zo benieuwd wat er in zit!", volgende: "boutique2" },
+        ]
+      },
+        armshirt2: {
+            tekst: "Moet je kijken naar dat shirt voor armpje, hij is er zo blij mee! Moet ook wel, aangezien mijn aanstaande voor altijd het bed zal moeten delen met ons beiden. Wauw het is dus nog steeds niet klaar met de cadeaus, maar we gaan nu wel echt verder met bruiloft. Tijd voor je bachelorotte! Wat ga je doen?",
+            keuzes: [
+                { tekst: "We gaan allemaal in matching outfits door de stad lopen met beschamende t-shirts. Vervolgens gaan we karaoke zingen en twerken net als Marcella!", volgende: "Marcella" },
+                { tekst: "Doe niet zo gek, ik wil lekker met mama, papa, luna, milan, tony en arm op de bank zitten. Kijken naar b&b vol liefde met een bak mammoet olijven en een zak chips.", volgende: "bank" },
+                { tekst: "Samen met mijn vrienden doe ik een Japanese cooking class, zodat ik als een echte Japanner sushi kan bouwen voor mijn man later", volgende: "sushi" },
+                { tekst: "Ik ga samen met mijn fashion queens Mama, Luna en Milou shoppen en langs allemaal leuke hippe winkeltjes in Amsterdam. Onderweg maken we even een foto van de 9 straatjes voor Henk, dit is echt een hidden gem in Amsterdam!"  , volgende: "milou" },
+            ]
+        },
+        kleding2: {
+            tekst: "Deze... wow. Ik ben sprakeloos, dit wilde ik al heel lang hebben. Het is zo mooi en het past perfect bij mijn stijl. Ik ben zo blij met dit cadeau, ik kan niet wachten om het te dragen. Maar goed, we gaan nu verder met de bruiloft. Tijd voor je bachelorotte! Wat ga je doen?",
+            keuzes: [
+                { tekst: "We gaan allemaal in matching outfits door de stad lopen met beschamende t-shirts. Vervolgens gaan we karaoke zingen en twerken net als Marcella!", volgende: "Marcella" },
+                { tekst: "Doe niet zo gek, ik wil lekker met mama, papa, luna, milan, tony en arm op de bank zitten. Kijken naar b&b vol liefde met een bak mammoet olijven en een zak chips.", volgende: "bank" },
+                { tekst: "Voor mijn bachelorette part wil ik met al mijn HEMA collega's tompouce eten en baby kleertjes vouwen in de Kinkerstraat", volgende: "hema" },
+            ]
+        },
+        boutique2: {
+            tekst: "Oh dit zal geweldig in mijn interieur staan. Ik ben zo blij met dit cadeau, ik kan niet wachten om het te gebruiken. Maar goed, we gaan nu verder met de bruiloft. Tijd voor je bachelorotte! Wat ga je doen?",
+            keuzes: [
+                { tekst: "We gaan allemaal in matching outfits door de stad lopen met beschamende t-shirts. Vervolgens gaan we karaoke zingen en twerken net als Marcella!", volgende: "Marcella" },
+                { tekst: "Doe niet zo gek, ik wil lekker met mama, papa, luna, milan, tony en arm op de bank zitten. Kijken naar b&b vol liefde met een bak mammoet olijven en een zak chips.", volgende: "bank" },
+                { tekst: "Ik ga samen met mijn fashion queens Mama, Luna en Milou shoppen en langs allemaal leuke hippe winkeltjes in Amsterdam. Onderweg maken we even een foto van de 9 straatjes voor Henk, dit is echt een hidden gem in Amsterdam!"  , volgende: "milou" },
+            ]
+        },
+        Marcella: {
+            tekst: "Wat een geweldige avond, we hebben zo veel gelachen en plezier gehad. Maar nu is het tijd om te gaan slapen, want morgen is de grote dag!",
+            keuzes: [
+                { tekst: "Ik ben zo blij dat ik deze avond heb gehad, ik kan niet wachten om te trouwen!", volgende: "trouwdag" },
+                { tekst: "Ik heb zo veel plezier gehad, maar ik ben ook moe. Tijd om te gaan slapen.", volgende: "trouwdag" },
+                { tekst: "Zo... I threw it back like a pro. Maar nu is het tijd om te gaan slapen, want morgen is de grote dag!", volgende: "trouwdag" },
+            ]
+        },
+        bank: {
+            tekst: "Niet veel beters dan zo'n avond als dit. Enige wat er nog bijhoort is mijn menneke straks. Ik ben zo benieuwd naar hem!",
+            keuzes: [
+                { tekst: "Sommigen vinden het misschien saai, maar zo'n avond is toch geweldig... Ik begin de Indian dance te doen.. tijd om te slapen.", volgende: "trouwdag" },
+                { tekst: "Ik heb zo veel plezier gehad, maar ik ben ook moe. Tijd om te gaan slapen.", volgende: "trouwdag" },
+                { tekst: "Nu lekker aan armpje pulken en dan is het echt tijd om te gaan slapen.", volgende: "trouwdag" },
+            ]
+        },
+        sushi: {
+            tekst: "Wauw, ebi maki rollen maken is echt een kunst. Ik heb er zo veel van geleerd, ik kan niet wachten om mijn man te voeren met mijn zelfgemaakte sushi. Maar nu is het tijd om te gaan slapen, want morgen is de grote dag!",
+            keuzes: [
+                { tekst: "Ik ben zo blij dat ik deze avond heb gehad, ik kan niet wachten om te trouwen!", volgende: "trouwdag" },
+                { tekst: "Buusssssinnn sushi. Dat is wat ik ga dromen", volgende: "trouwdag" },
+                { tekst: "Ik ben zenuwachtig... een paar tiktoks kijken en dan is het echt tijd om te gaan slapen.", volgende: "trouwdag" },
+            ]
+        },
+            hema: {
+            tekst: "Man man man, wat kan ik goed tompoucen eten en baby kleertjes vouwen. En wat een plezier heb ik altijd met mijn HEMA collega's. De nacht is voorbij gevlogen, maar nu is het tijd om te gaan slapen, want morgen is de grote dag!",
+            keuzes: [
+                { tekst: "HEMA is echt de beste winkel ooit, ik ben zo blij dat ik daar werk. Ik kan niet wachten om te trouwen!", volgende: "trouwdag" },
+                { tekst: "Nu lekker aan armpje pulken en dan is het echt tijd om te gaan slapen.", volgende: "trouwdag" },
+                { tekst: "Ik ben zenuwachtig... een paar tiktoks kijken en dan is het echt tijd om te gaan slapen.", volgende: "trouwdag" },
+            ]
+        },
+        milou: {
+            tekst: "Lekker geshopt met mijn fashion queens. We hebben de leukste dingen gevonden en ik kan niet wachten om ze te dragen. Maar nu is het tijd om te gaan slapen, want morgen is de grote dag!",
+            keuzes: [
+                { tekst: "Ik pak arm erbij en dan val ik zo in slaap.", volgende: "trouwdag" },
+                { tekst: "Ook veel ouwe meuk gezien in winkels, wat een achenebbisj. Gelukkig ook genoeg hippe dingen. Time to sleep.", volgende: "trouwdag" },
+                { tekst: "Ik ben zenuwachtig... een paar tiktoks kijken en dan is het echt tijd om te gaan slapen.", volgende: "trouwdag" },
+            ]
+        },
+        trouwdag: {
+            tekst: "De grote dag is aangebroken! Je staat op het punt om je aanstaande te ontmoeten en te trouwen. Maar eerst ontmoet je zijn moeder. Wat is je eerste indruk?",
+            keuzes: [
+                { tekst: "Wat een lieve vrouw, ik voel me meteen part of the family", volgende: "moeder_lief" },
+                { tekst: "Die vrouw houdt maar niet op met lullen over ene Jan, maar verder lijkt ze lief", volgende: "moeder_afgeleid" },
+                { tekst: "De moeder is super lief, maar had een enorm groot stinkbeest bij zich genaamd George.. wat vind ik hiervan?", volgende: "moeder_george" },
+            ]
+        },
+        moeder_lief: {
+            tekst: "Wat een geweldige vrouw, ik ben zo blij dat ik haar heb ontmoet. Nu is het tijd om mijn aanstaande te ontmoeten! Hoe zou die eruit zien?",
+            keuzes: [
+                { tekst: "Ik hoop dat hij er goed uitziet. Zolang hij net zo lief is als zijn moeder, moet het goedkomen", volgende: "uiterlijk_goede" },
+                { tekst: "Ik hoop dat hij een goede persoonlijkheid heeft, dat is het belangrijkste voor mij. Ook al wil ik wel dat ie mooi bruin haar heeft en lang is. Het zou ook leuk zijn als hij uit Amsterdam komt, ik wil weer verhuizen naar de big city waar ze schreeuwen '2 BAKKIES AARDBEIEN 5 EUROOO'.", volgende: "bruinhaar" },
+                { tekst: "I am looking for a guy in Finance, blue eyes, 6ft5, finance" , volgende: "finance" },
+            ]
+        },
+        moeder_afgeleid: {
+            tekst: "Die vrouw houdt maar niet op met lullen over ene Jan, maar verder lijkt ze lief. Nu is het tijd om mijn aanstaande te ontmoeten! Hoe zou die eruit zien?",
+            keuzes: [
+                { tekst: "Als de experts gewoon zorgne voor een goede match moet het goedkomen. Ik ben zelf namelijk de mooiste vrouw op aarde.. dus dan zal er vast ook een knappe, lange jongeman met bruin haar en blauwe ogen staan.", volgende: "uiterlijk_goede" },
+                { tekst: "Als hij maar niet knokig is, niet zijn keeltje schraapt, geen rolgordijnen sloopt en niet naar mij schreeuwt in de auto. Dan komt het goed.", volgende: "sloper" },
+                { tekst: "I am looking for a guy in Finance, blue eyes, 6ft5, finance." , volgende: "finance" },
+            ]
+        },
+        moeder_george: {
+            tekst: "De moeder is super lief, maar had een enorm groot stinkbeest bij zich genaamd George.. wat vind ik hiervan? Nu is het tijd om mijn aanstaande te ontmoeten! Hoe zou die eruit zien?",
+            keuzes: [
+                { tekst: "Oh wat stinkt die hond, ik krijg paniek. Trouwen!? NU!? Met een random?? IK MOET HIER WEG", volgende: "vluchten" },
+                { tekst: "Oke even tot tien tellen Bo. Zo vaak zal ik die hond niet hoeven te zien en misschien is het juist een voorbode dat mijn man ook een golden retriever type is... dat zou zo gek niet zijn.", volgende: "uiterlijk_goede" },
+            ]
+        },
+        uiterlijk_goede: {
+            tekst: "Alright, goede keuze Bo. Met vertrouwen ga je nu je aanstaande ontmoeten. Maar vlak voordat zijn moeder wegging vertelde ze de naam van je aanstaande. 'Keje'. Wat denk je hiervan?",
+            keuzes: [
+                { tekst: "Keje? Wat een bijzondere naam, ik ben benieuwd naar hem!", volgende: "altaar" },
+                { tekst: "Keje!!? WTF! Ik kijk Luna aan en we wisselen wat blikken en onze typische handgebaren uit. Sorry maar ik ga niet met iemand trouwen die KEJE heet, DOE NORMIE.", volgende: "vluchten" },
+                { tekst: "Keje? oh my god dat is zo'n leuke naam. Leuke namen geven zit vast in de familie. Hij mag ook de namen van onze kinderen verzinnen later.", volgende: "altaar" },
+            ]
+        },
+        bruinhaar: {
+            tekst: "Lange jongen, bruin haar en mooi ogen, dat is wat ik wil. Hij staat al klaar bij het altaar, maar wat zei ze nou dat zijn naam is? Oh ja, Keje. Wat denk je hiervan, Bo?",
+            keuzes: [
+                { tekst: "Keje? Wat een bijzondere naam, ik ben benieuwd naar hem!", volgende: "altaar" },
+                { tekst: "Keje!!? WTF! Ik kijk Luna aan en we wisselen wat blikken en onze typische handgebaren uit. Sorry maar ik ga niet met iemand trouwen die KEJE heet, DOE NORMIE.", volgende: "vluchten" },
+                { tekst: "Keje? oh my god dat is zo'n leuke naam. Leuke namen geven zit vast in de familie. Hij mag ook de namen van onze kinderen verzinnen later.", volgende: "altaar" },
+            ]
+        },
+        finance: {
+            tekst: "Slecht nieuws. Je aanstaande werkt in Finance, heeft inderdaad blauwe ogen, maar hij is niet 6ft5. Hij is namelijk 6ft6. Vast geen probleem, toch? Hij staat al klaar bij het altaar. Laten we hem ontmoeten!",
+            keuzes: [
+                { tekst: "Oh geweldig, stel je nou voor dat ie ook nog basketbal speelt zoals ik. Dan worden we echt couple goals.Time to meet this handsome sounding man.", volgende: "altaar" },
+                { tekst: "Papa Penk (pp) kalmeert me in mijn zenuwen en we lopen samen naar het altaar. Ik ben zo benieuwd naar mijn aanstaande!", volgende: "altaar" },
+        ]
+    },
+        sloper: {
+            tekst: "Uit betrouwbare bronnen hoorde ik dat hij geen rolgordijnen sloopt, maar dat hij wel een beetje knokig is. Zolang er een balans is tussen zijn knokigheid en mijn liefde voor hem, moet het goedkomen. Hij staat al klaar bij het altaar. Laten we hem ontmoeten!",
+            keuzes: [
+                { tekst: "Ik ben zo benieuwd naar mijn aanstaande, stel nou dat hij ook basketbal speelt zoals ik. Dan worden we echt een power couple.", volgende: "altaar" },
+                { tekst: "Papa Penk kalmeert me in mijn zenuwen en we lopen samen naar het altaar. Ik ben zo benieuwd naar mijn aanstaande!", volgende: "altaar" },
+            ]
+        },
+        vluchten: {
+            tekst: "Je hebt besloten om te vluchten, maar hoe kom je thuis??",
+            keuzes: [
+                { tekst: "Ik ga naar huis lopen, het is maar een aantal kilometer. Ik zie er nota bene toch prachtig uit.", volgende: "thuis" },
+                { tekst: "Ik besluit om langs de weg te liften voor een taxi. Ik moet hier weg", volgende: "liften" },
+            ]
+        },
+        thuis: {
+            tekst: "Een paar honderd meter verderop hoor je ineens iemand je naam roepen. Wie komt daar aan rennen? Het is Luna..! Dat zusje van me heeft me door. Wat zegt ze nou tegen me?",
+            keuzes: [ 
+                { tekst: "Ze doet een rare handbeweging en zegt BO! Die sushi binnen is booomboooclaarrttt. Het heeft geen zin om weg te lopen, je moet de uitdaging aangaan. Maak Tony, Lapje, Arm en Moos trots.", volgende: "geenpaniek" },
+                { tekst: "Bo ik ben vergeten je nagels te doen kom terug.", volgende: "geenpaniek" },
+            ]
+        },
+        liften: {
+            tekst: "Terwijl je staat te wachten hoor je ineens iemand aankomen lopen en ze roept je naam... het is mammie. Wat fijn, zij weet altijd wat het beste is voor mij.",
+            keuzes: [
+                { tekst: "Bootje, ik heb de jongenman even mogen ontmoeten net met Carlo... en ik heb een goed gevoel bij hem. Kom we gaan samen terug.", volgende: "geenpaniek" },
+                { tekst: "Niet lullen maar poetsen! Kom we gaan terug, het komt allemaal goed.", volgende: "geen paniek" },
+            ]
+        },
+        geenpaniek: {
+            tekst: "Wat moet ik zonder mijn familie. Ik heb de moed weer gevonden, ik had gewoon lichte paniek. Het is tijd om naar dat altaar te gaan, hij staat te wachten.",
+            keuzes: [{ tekst: "Papa Penk kalmeert me in mijn zenuwen en we lopen samen naar het altaar. Ik ben zo benieuwd naar mijn aanstaande.. het is zo ver. Tijd om te trouwen.", volgende: "altaar" },
+            ]
+        },
+        altaar: {
+            tekst: "Met papa aan mijn zijde gaat de deur open en loop ik naar het altaar. Daar staat mijn aanstaande, Keje. Ik kan mijn ogen niet geloven, wat een knappe, charmante, lange, leuke, mooie, sportieve, goed uitziende (de schrijver van deze website kent geen andere bijvoeglijke naamwoorden meer) VENT. Ik ben zo blij dat ik met hem ga trouwen. Wat zeg ik tegen hem en hoe groeten we elkaar?",
+            keuzes: [
+                { tekst: "Ik zeg 'Hoi Keje, ik ben zo blij dat ik met je ga trouwen. Je ziet er geweldig uit!' en we geven elkaar een hand. De avond vordert en het feest begint..", volgende: "feest" },
+                { tekst: "Ik lach naar hem en zeg 'Hoi koeiestrond! Draai me naar de zaal en begin sturdy te dansen.", volgende: "sturdy" },
+                { tekst: "Ik zeg 'Hoi Keje, wauw. Je ziet er geweldig uit! We geven elkaar direct een kus. Ik voel vlinders. De ceremonie zit erop en het is tijd voor het feest.", volgende: "feest" },
+            ]
+        },
+        sturdy: {
+            tekst: "WTF doe jij. Dansen kan je wel... de toon is gezet. Keje hoopt dat je dit vaker gaat blijven doen midden in de woonkamer, zelfs als jullie wat ouder zijn. Je danssessie is klaar, evenals de ceremonie. Het is tijd voor het feest.",
+            keuzes: [ 
+                { tekst: "Misschien niet handig om zomaar sturdy te worden voor de eerste keer bij mijn aanstaande, maar hij staat er nog. Ik ga gewoon verder met de avond en we gaan feesten!", volgende: "feest" },
+            ]
+        },
+        feest: {
+            tekst: "Het feest is geweldig! We dansen, lachen en genieten van de gezelligheid. Maar dan komt er een verrassing: Keje loopt naar je toe en zegt iets onverwachts. Hij vraagt 'wat is jouw favoriete eten?'",
+            keuzes: [
+                { tekst: "Eigenlijk is er geen peil op te trekken maar ik zeg gewoon: 'Ik hou van sushi, vooral crunchy ebi maki rollen!'", volgende: "sushilekker" },
+                { tekst: "Ik ben echt raar, omdat ik geen vlees wil eten maar toch is mijn favoriete eten frikadel. Daarnaast vind ik linzen vies, omdat het klinkt als lindworm. Oh, en ik lust geen kaas. Maar wel tosti's met kaas en MAYO en trouwens ook kaasblokjes, maar dan niet degene met een harde rand. Snap je?", volgende: "frika" },
+            ]
+        },
+        sushilekker: {
+            tekst: "Hij lacht en zegt: 'Ik hou ook van sushi! Laten we samen een keer sushi gaan eten bij de foodhallen, ik ken een lekker plekje. Ik ben er ook van plan om tijdelijk te werken, zodat ik zo'n roll kan maken.' Je voelt een klik met hem en je weet dat dit het begin is van iets moois. De avond gaat voorbij... De volgende ochtend is aangebroken en het is tijd om erachter te komen waar de huwelijksreis naartoe gaat. Wat wordt het?",
+            keuzes: [
+                { tekst: "We gaan naar Japan, de bakermat van sushi! Ik kan niet wachten om daar te zijn en samen met Keje de cultuur te ontdekken.", volgende: "japan" },
+                { tekst: "De reis brengt jullie naar Gdansk! Een stad vol geschiedenis en cultuur, maar voornamelijk vol met breakdance battles, althans dat heb ik vernomen.", volgende: "gdansk" },
+                { tekst: "We gaan naar de Malediven, een paradijs op aarde! Al heet het tegenwoordg niet meer zo, het heet officieel Ameland. Ik kan niet wachten om daar te zijn en samen met Keje te genieten van de zon, zee en strand.", volgende: "Ameland" },
+            ]
+        },
+        frika: {
+            tekst: "'Je bent gestoord!' zegt Keje met een lach. 'Maar ik vind dat eigenlijk heel leuk. Ik neem liever een kroket, maar een goede snackbar op de zondagavond is ook niet te versmaden. Je voelt een klik met hem en je weet dat dit het begin is van iets moois. De avond gaat voorbij... De volgende ochtend is aangebroken en het is tijd om erachter te komen waar de huwelijksreis naartoe gaat. Wat wordt het?",
+            keuzes: [
+                 { tekst: "We gaan naar Japan, de bakermat van sushi! Ik kan niet wachten om daar te zijn en samen met Keje de cultuur te ontdekken.", volgende: "japan" },
+                { tekst: "De reis brengt jullie naar Gdansk! Een stad vol geschiedenis en cultuur, maar voornamelijk vol met breakdance battles, althans dat heb ik vernomen.", volgende: "gdansk" },
+                { tekst: "We gaan naar de Malediven, een paradijs op aarde! Al heet het tegenwoordg niet meer zo, het heet officieel Ameland. Ik kan niet wachten om daar te zijn en samen met Keje te genieten van de zon, zee en strand.", volgende: "Ameland" },
+            ]
+        },
+        japan: {
+            tekst: "De reis naar Japan is geweldig! We ontdekken de cultuur, eten sushi en genieten van elkaars gezelschap. Maar dan leer je hem echt kennen... Hij is dus echt knokig, hij verhuist de hele tijd spullen in huis, sloopt rolgordijnen, schraapt zijn keel en koopt nooit zeep en tandpasta. Wat vind je hiervan?",
+            keuzes: [
+                { tekst: "Ach... ik zal er mee moeten leven. Dit is gewoon de man van mijn dromen, ik weet het zeker. Ik zal voor altijd bij hem blijven", volgende: "samen" },
+                { tekst: "Dit is TOO MUCH... ik moet weg nu het nog kan... sorry Keje. We gaan scheiden.", volgende: "scheiden" },
+                { tekst: "Waarom zouden die dingen een probleem zijn? Ik stel me echt heel erg aan en moet niet zo zeiken!", volgende: "samen" },
+            ]
+        },
+        gdansk: {
+            tekst: "De reis naar Gdansk is geweldig! Een mooie stad, waar we lekker hebben gewandeld en veel cappucino's hebben genuttigd. En OH MY GOD, wat kan hij BREAKDANCEN! Maar... je leert ook zijn flaws kennen. Hij is dus echt knokig, hij verhuist de hele tijd spullen in huis, sloopt rolgordijnen, schraapt zijn keel en koopt nooit zeep en tandpasta. Wat vind je hiervan?",
+            keuzes: [
+                { tekst: "Dit is TOO MUCH... ik moet weg nu het nog kan... sorry Keje. We gaan scheiden" , volgende: "scheiden" },
+                { tekst: "Al laat hij scheten in bed... ik zal voor altijd bij deze koe blijven, dat weet ik zeker.", volgende: "samen" },
+                { tekst: "Waarom zouden die dingen een probleem zijn? Ik stel me echt heel erg aan en moet niet zo zeiken!", volgende: "samen" },
+            ]
+        },
+        Ameland: {
+            tekst: "Ameland blijft speciaal, hier ging Penk vroeger ook altijd naar toe. We hebben genoten van de zon, zee en strand, maar we mochten ook mee in de keet van Cor. Maar... je leert ook zijn flaws kennen. Hij is dus echt knokig, hij verhuist de hele tijd spullen in huis, sloopt rolgordijnen, schraapt zijn keel en koopt nooit zeep en tandpasta. Wat vind je hiervan?",
+            keuzes: [
+                { tekst: "Deze vent moet opbokken. Ik trek het niet, ik wil een stille npc vriend die precies naar mij luistert, we gaan scheiden." , volgende: "scheiden" },
+                { tekst: "Al laat hij scheten in bed... ik zal voor altijd bij deze koe blijven, dat weet ik zeker.", volgende: "samen" },
+                { tekst: "Elke keer dathij zoiets doet dan ga ik gewoon schreeuwen en geef ik het een stoot (3x raden waar). Zo zal ie het wel leren.", volgende: "samen" },
+            ]
+        },
+        samen: {
+            tekst: "Je hebt besloten om samen met Keje verder te gaan, ondanks zijn flaws. Jullie leven samen in harmonie en genieten van elkaars gezelschap. Nadat jullie zo'n 10 jaar samen hebben doorgebracht in de mooiste stad van de wereld, Amsterdam, besloten jullie om naar de rust te verhuizen. Jullie kopen een huis in de natuur, waar jullie een gezin vormen en jij eindelijk je eigen moestuin kunt beginnen. Happy life... <3",
+            keuzes: [
+                { tekst: "Happy Birthday Apekop, kusjes van Koe", volgende: "einde" },
+            ]
+        },
+        scheiden: {
+            tekst: "Scheiden!? Begin maar opnieuw flapdrol. Dit gaan we niet doen hè!",
+            keuzes: [
+                { tekst: "TERUG NAAR HET BEGIN", volgende: "start" },
+            ]
+        },
+        einde: {
+            tekst: "Hee Bo, je mag nog even je resterende cadeau(s) openen! Elke keuze die je hebt gemaakt brengt je via een andere weg naar het einde. Dit is het einde van jouw verhaal, maar je kunt altijd opnieuw beginnen en andere keuzes maken. Bedankt voor het spelen!",
+            keuzes: [
+                { tekst: "Opnieuw spelen", volgende: "start" },
+            ]
+        }
+    }
+
+    function laadScene(naam) {
+      const scene = verhaal[naam];
+      document.getElementById("story").innerText = scene.tekst;
+      const keuzesDiv = document.getElementById("choices");
+      keuzesDiv.innerHTML = "";
+
+      if (scene.keuzes && scene.keuzes.length > 0) {
+        scene.keuzes.forEach(keuze => {
+          const knop = document.createElement("button");
+          knop.innerText = keuze.tekst;
+          knop.className = "choice-button";
+          knop.onclick = () => laadScene(keuze.volgende);
+          keuzesDiv.appendChild(knop);
+        });
+      } else {
+        const knop = document.createElement("button");
+        knop.innerText = "Opnieuw spelen";
+        knop.className = "choice-button";
+        knop.onclick = () => laadScene("start");
+        keuzesDiv.appendChild(knop);
+      }
+    }
+
+    laadScene("start");
+  </script>
+</body>
+</html>
