@@ -69,21 +69,35 @@
   <script>
     const verhaal = {
       start: {
-        tekst: "Hoi Bootje. Welkom in je eigen MAFS wereld. Je gaat trouwen! 💒👰‍♂️",
+        tekst: "Hoi Bootje. Welkom in je eigen Married At First Sight wereld. Je gaat trouwen! 💒👰‍♂️",
         keuzes: [
-          { tekst: "OMG IK GA TROUWEN!!!!", volgende: "experts" },
+          { tekst: "OMG IK GA TROUWEN!!!!", volgende: "regels" },
         ]
       },
+        regels: {
+            tekst: "Voordat we verder gaan... een kleine disclaimer dat dit GEEN huwelijksaanzoek is. Dit is enkel voor plezierige doeleinden vanwege de verjaardag der B.S. Bennen. Goed... we gaan verder: De experts hebben eigenlijk nog nooit zoveel moeite gehad met het vinden van een geschikte partner voor iemand. Wat denk je dat hier de reden van is?",
+            keuzes: [
+                { tekst: "Ik ben er helemaal klaar voor. Tijd om te zien wat de experts in petto hebben.", volgende: "experts" },
+                { tekst: "Oke, dus als ik hier klik ga ik terug naar start?", volgende: "start" },
+                { tekst: "En deze knop brengt je naar een website met een golden card voor de Zara waardoor je een jaar lang 40% korting hebt op alles!", volgende: "prank" },
+        ]
+        },
+        prank: {
+            tekst: "OHH GEPRANKT, oma je bent geprankt voor Youtube. HAH, sorry. Zó geniaal ben ik ook weer niet. Maar... nu is het echt tijd om te zien wat die experts te zeggen hebben.",
+            keuzes: [
+                { tekst: "Truc d'ouf. Daar heb je me te grazen genomen. Let's go naar de experts dan maar!", volgende: "experts" },      
+      ]
+        },
         experts: {
             tekst: "De experts hebben eigenlijk nog nooit zoveel moeite gehad met het vinden van een geschikte partner voor iemand. Wat denk je dat hier de reden van is?",
             keuzes: [
-                { tekst: "Nouuu, misschien omdat ik ... een kussenschudder ben, een zelfbruin sprayer, een kattenpoep opruim-vermijder, een warmtebron, een schoonmaakleider, linzenhater en een misofoon.", volgende: "verder" },
+                { tekst: "Nouuu, misschien omdat ik ... een kussenschudder ben, een zelfbruin sprayer, een kattenpoep opruim-vermijder, een warmtebron, een misofoon, een schoonmaakleidende grommer, een prullenbakpropper en een enorme linzenhater.", volgende: "verder" },
                 { tekst: "Ik ben 3x3 basketbal CHAMP, dus het is gewoon heel lastig om mee te gaan op mijn niveau.", volgende: "verder" },
-                { tekst: "Ik denk... omdat ik mijn hele huis roze wil maken en er zijn HEEL weinig mannen die hiermee akkoord gaan.", volgende: "verder" },
+                { tekst: "Ik denk... omdat ik mijn hele huis roze wil maken en er zijn HEEL weinig mannen die hiermee akkoord gaan. Mocht die bestaan, moet ik deze vent niet meer laten gaan.", volgende: "verder" },
       ]
         },
         verder: {
-        tekst: "Dat zal vast kloppen ja.... Goed, je zal vast benieuwd zijn wat voor man er straks voor jou klaar staat. Als het maar niet iemand is zoals...",
+        tekst: "Dat zal vast kloppen ja.... Goed, iedereen zal benieuwd zijn wat voor man er straks voor jou klaar staat. Als het maar niet iemand is zoals...",
         keuzes: [
           { tekst: "Domme Olof", volgende: "Olof" },
           { tekst: "Sluwe Dennis", volgende: "Dennis" },
@@ -96,6 +110,7 @@
         tekst: "Oh nee, Olof moet je niet willen nee. Je verdient beter, dus laten we dat regelen. Ik denk dat jij maar eens een jurk moet uitzoeken!",
         keuzes: [
           { tekst: "Klinkt als een goed plan, op naar onze enige echte housewife van het zuiden", volgende: "jurk" }
+          { tekst: "Nou..... wacht maar even met die jurk. Is Olof nog single dan...?", volgende: "verkeerd" }
         ]
       },
       Dennis: {
@@ -114,9 +129,17 @@
         tekst: "Trouw nog liever met die konijn dan met Sarath. Althans, misschien zou een langere versie van Sarath nog wel interessant zijn..? Laten we snel gaan shoppen voor een jurk!!",
         keuzes: [
             { tekst: "EXACT, op naar onze enige echte housewife van het zuiden!", volgende: "jurk" }
+            { tekst: "Nou.. wacht even hoor. Hoor ik nou dat Sarath nog zoekende is??", volgende: "verkeerd" }
             ]
       },
-
+      
+      verkeerd: {
+            tekst: "Dit was niet helemaal de bedoeling hè Bootje. Je keert terug naar start en je probeert het nog maar eens opnieuw!",
+            keuzes: [
+                { tekst: "Oeps, sorry... Ik was gewoon even afgeleid door zijn beauty. Ik heb m'n focus er weer bij.", volgende: "start" },
+            ]
+        },
+      
         jurk: {
             tekst: "Wat voor jurk ga je kiezen? Je hebt een aantal opties, maar je moet wel snel beslissen want de tijd dringt!",
             keuzes: [
