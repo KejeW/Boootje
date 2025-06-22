@@ -324,23 +324,24 @@
         moeder_lief: {
             tekst: "Wat een geweldige vrouw, ik ben zo blij dat ik haar heb ontmoet. Nu is het tijd om mijn aanstaande te ontmoeten! Hoe zou die eruit zien?",
             keuzes: [
-                { tekst: "Ik hoop dat hij er goed uitziet. Zolang hij net zo lief is als zijn moeder, moet het goedkomen", volgende: "uiterlijk_goede" },
+                { tekst: "Als de experts gewoon zorgen voor een goede match moet het goedkomen. Ik ben zelf namelijk de mooiste vrouw op aarde.. dus dan zal er vast ook een knappe, lange jongeman met bruin haar en blauwe ogen staan.", volgende: "uiterlijk_goede" },
                 { tekst: "Ik hoop dat hij een goede persoonlijkheid heeft, dat is het belangrijkste voor mij. Ook al wil ik wel dat ie mooi bruin haar heeft en lang is. Het zou ook leuk zijn als hij uit Amsterdam komt, ik wil weer verhuizen naar de big city waar ze schreeuwen '2 BAKKIES AARDBEIEN 5 EUROOO'.", volgende: "bruinhaar" },
                 { tekst: "I am looking for a guy in Finance, blue eyes, 6ft5, finance" , volgende: "finance" },
             ]
         },
         moeder_afgeleid: {
-            tekst: "Die vrouw houdt maar niet op met lullen over ene Jan, maar verder lijkt ze lief. Nu is het tijd om mijn aanstaande te ontmoeten! Hoe zou die eruit zien?",
+            tekst: "Ja, dat geyap is nog wel een dingetje inderdaad maar dat komt vast goed. Nu is het tijd om mijn aanstaande te ontmoeten! Hoe zou die eruit zien?",
             keuzes: [
-                { tekst: "Als de experts gewoon zorgne voor een goede match moet het goedkomen. Ik ben zelf namelijk de mooiste vrouw op aarde.. dus dan zal er vast ook een knappe, lange jongeman met bruin haar en blauwe ogen staan.", volgende: "uiterlijk_goede" },
+                { tekst: "Als de experts gewoon zorgen voor een goede match moet het goedkomen. Ik ben zelf namelijk de mooiste vrouw op aarde.. dus dan zal er vast ook een knappe, lange jongeman met bruin haar en blauwe ogen staan.", volgende: "uiterlijk_goede" },
                 { tekst: "Als hij maar niet knokig is, niet zijn keeltje schraapt, geen rolgordijnen sloopt en niet naar mij schreeuwt in de auto. Dan komt het goed.", volgende: "sloper" },
                 { tekst: "I am looking for a guy in Finance, blue eyes, 6ft5, finance." , volgende: "finance" },
             ]
         },
         moeder_george: {
-            tekst: "De moeder is super lief, maar had een enorm groot stinkbeest bij zich genaamd George.. wat vind ik hiervan? Nu is het tijd om mijn aanstaande te ontmoeten! Hoe zou die eruit zien?",
+            tekst: "Ach.. als ie begint te blaffen dan loop ik gewoon naar beneden.. en met die hond zal ik ook wel goed om kunnen gaan. Nu is het tijd om mijn aanstaande te ontmoeten! Hoe zou die eruit zien?",
             keuzes: [
-                { tekst: "Oh wat stinkt die hond, ik krijg paniek. Trouwen!? NU!? Met een random?? IK MOET HIER WEG", volgende: "vluchten" },
+                { tekst: "Wacht even hoor.... Trouwen... NU!? Met een random?? En dan zo'n stinkhond? IK MOET HIER WEG", volgende: "vluchten" },
+                { tekst: "Die hond vind ik wel een weg mee. Als hij maar niet knokig is, niet zijn keeltje schraapt, geen rolgordijnen sloopt en niet naar mij schreeuwt in de auto. Dan komt het goed.", volgende: "sloper" },
                 { tekst: "Oke even tot tien tellen Bo. Zo vaak zal ik die hond niet hoeven te zien en misschien is het juist een voorbode dat mijn man ook een golden retriever type is... dat zou zo gek niet zijn.", volgende: "uiterlijk_goede" },
             ]
         },
@@ -363,10 +364,10 @@
         finance: {
             tekst: "Slecht nieuws. Je aanstaande werkt in Finance, heeft inderdaad blauwe ogen, maar hij is niet 6ft5. Hij is namelijk 6ft6. Vast geen probleem, toch? Hij staat al klaar bij het altaar. Laten we hem ontmoeten!",
             keuzes: [
-                { tekst: "Oh geweldig, stel je nou voor dat ie ook nog basketbal speelt zoals ik. Dan worden we echt couple goals.Time to meet this handsome sounding man.", volgende: "altaar" },
-                { tekst: "Papa Penk (pp) kalmeert me in mijn zenuwen en we lopen samen naar het altaar. Ik ben zo benieuwd naar mijn aanstaande!", volgende: "altaar" },
+                { tekst: "Oh geweldig, stel je nou voor dat ie ook nog basketbal speelt zoals ik. Dan worden we echt couple goals.Time to meet this handsome sounding man.", volgende: "henk" },
+                { tekst: "Papa Penk (pp) kalmeert me in mijn zenuwen en we lopen samen naar het altaar. Ik ben zo benieuwd naar mijn aanstaande!", volgende: "henk" },
         ]
-    },
+      },
         sloper: {
             tekst: "Uit betrouwbare bronnen hoorde ik dat hij geen rolgordijnen sloopt, maar dat hij wel een beetje knokig is. Zolang er een balans is tussen zijn knokigheid en mijn liefde voor hem, moet het goedkomen. Hij staat al klaar bij het altaar. Laten we hem ontmoeten!",
             keuzes: [
@@ -397,8 +398,16 @@
         },
         geenpaniek: {
             tekst: "Wat moet ik zonder mijn familie. Ik heb de moed weer gevonden, ik had gewoon lichte paniek. Het is tijd om naar dat altaar te gaan, hij staat te wachten.",
-            keuzes: [{ tekst: "Papa Penk kalmeert me in mijn zenuwen en we lopen samen naar het altaar. Ik ben zo benieuwd naar mijn aanstaande.. het is zo ver. Tijd om te trouwen.", volgende: "altaar" },
+            keuzes: [
+              { tekst: "Papa Penk kalmeert me in mijn zenuwen en we lopen samen naar het altaar. Ik ben zo benieuwd naar mijn aanstaande.. het is zo ver. Tijd om te trouwen.", volgende: "henk" },
             ]
+        },
+        henk: {
+            tekst: "Voordat PP je naar het altaar brengt, geeft hij je nog wat laatste wijze woorden mee. Die klinken als volgt:",
+            keuzes: [
+              { tekst: "Je moet je laten inspirerend door wat je in het leven gewoon tegenkomt. Bepaalde sferen... Seaman's Grave!", volgende: "altaar" },
+              { tekst: "Kan je zo even aan hem vragen of hij wel weet dat Cruyff uit Amsterdam komt?", volgende: "altaar" },
+            ]  
         },
         altaar: {
             tekst: "Met papa aan mijn zijde gaat de deur open en loop ik naar het altaar. Daar staat mijn aanstaande, Keje. Ik kan mijn ogen niet geloven, wat een knappe, charmante, lange, leuke, mooie, sportieve, goed uitziende (de schrijver van deze website kent geen andere bijvoeglijke naamwoorden meer) VENT. Ik ben zo blij dat ik met hem ga trouwen. Wat zeg ik tegen hem en hoe groeten we elkaar?",
