@@ -93,7 +93,7 @@
             keuzes: [
                 { tekst: "Nouuu, misschien omdat ik ... een kussenschudder ben, een zelfbruin sprayer, een kattenpoep opruim-vermijder, een warmtebron, een misofoon, een schoonmaakleidende grommer, een prullenbakpropper en een enorme linzenhater.", volgende: "verder" },
                 { tekst: "Ik ben 3x3 basketbal CHAMP, dus het is gewoon heel lastig om mee te gaan op mijn niveau.", volgende: "verder" },
-                { tekst: "Ik denk... omdat ik mijn hele huis roze wil maken en er zijn HEEL weinig mannen die hiermee akkoord gaan. Mocht die bestaan, moet ik deze vent niet meer laten gaan.", volgende: "verder" }
+                { tekst: "Ik denk... omdat ik mijn hele huis roze wil maken en er zijn HEEL weinig mannen die hiermee akkoord gaan. Mocht die bestaan, moet ik deze vent niet meer laten gaan.", volgende: "roze" }
       ]
         },
         verder: {
@@ -103,6 +103,15 @@
           { tekst: "Sluwe Dennis", volgende: "Dennis" },
           { tekst: "Spraakzame Giovanni", volgende: "Giovanni" },
           { tekst: "Sarath en z'n konijn", volgende: "Sarath" },
+      ]
+        },
+        roze: {
+            tekst: "Uit betrouwbare bronnen heb ik gehoord dat hij het belangrijk vindt als jij gelukkig bent. Als dat veel roze in huis betekent, dan zal dit vast goekomen. Laten we snel gaan kijken naar de mannen die voor jou klaar staan. Als het maar niet iemand is zoals...",
+            keuzes: [
+                { tekst: "Kromme schouders Joshua", volgende: "Joshua" },
+                { tekst: "Michiel uit Limbuuurgh", volgende: "Michiel" },
+                { tekst: "Spraakzame Giovanni", volgende: "Giovanni" },
+                { tekst: "Sarath en z'n konijn", volgende: "Sarath" }
       ]
         },
 
@@ -130,9 +139,21 @@
         keuzes: [
             { tekst: "EXACT, op naar onze enige echte housewife van het zuiden!", volgende: "jurk" },
             { tekst: "Nou.. wacht even hoor. Hoor ik nou dat Sarath nog zoekende is??", volgende: "verkeerd" }
-            ]
+        ]
       },
-      
+      Michiel: {
+        tekst: "Michiel!! Hij is ook maar een emotionele man..!",
+        keuzes: [
+          { tekst: "Nee sorry met Michiel voel ik echt een disbalans... Zo'n type heb ik niet nodig, komop we gaan een jurk uitzoeken!", volgende: "jurk" },
+      ]
+      },
+      Joshua: {
+        tekst: "Die kromme opgetrokken schouders van hem zou ik geen seconde volhouden! Daar ben ik niet naar opzoek nee..",
+        keuze: [
+            { tekst: "EXACT, op naar onze enige echte housewife van het zuiden voor mijn trouwjurk!", volgende: "jurk" },
+        ]
+      },
+    
       verkeerd: {
             tekst: "Dit was niet helemaal de bedoeling hè Bootje. Je keert terug naar start en je probeert het nog maar eens opnieuw!",
             keuzes: [
@@ -144,14 +165,23 @@
             tekst: "Wat voor jurk ga je kiezen? Je hebt een aantal opties, maar je moet wel snel beslissen want de tijd dringt!",
             keuzes: [
                 { tekst: "Ik wil een jurk met gepofte mouwen!", volgende: "cadeaus" },
-                { tekst: "Ik wil de oude trouwjurk van Annie aan... die is prachtig en extra bijzonder", volgende: "cadeaus" },
+                { tekst: "Ik wil de oude trouwjurk van Annie aan... die is prachtig en extra bijzonder", volgende: "jurkmooi." },
                 { tekst: "Ik wil geen jurk aan, maar mijn denim pakje!", volgende: "denim_cadeaus" }
+            ]
+        },
+
+        jurkmooi: {
+            tekst: "Wauw... wat ben je ook prachtig. Nu is het tijd om het cadeautje van je aanstaande te openen. Kijk eens, je mag kiezen uit een aantal cadeaus die hij voor je heeft gekocht. Wat ga je kiezen?",
+            keuzes: [
+                { tekst: "Een pakketje voor een sportieve meid!", volgende: "basketbal" },
+                { tekst: "Een shirt voor arm!", volgende: "armshirt" },
+                { tekst: "Een ander mysterieus item...", volgende: "kleding" }
             ]
         },
         cadeaus: {
             tekst: "Okeeee Bobslay, interessante keuze. Al was dat wel een klein beetje te verwachten. Nu is het tijd om het cadeautje van je aanstaande te openen. Kijk eens, je mag kiezen uit een aantal cadeaus die hij voor je heeft gekocht. Wat ga je kiezen?",
             keuzes: [
-                { tekst: "Een pakketje voor een sportieve meid!", volgende: "boutique" },
+                { tekst: "Een pakketje voor een sportieve meid!", volgende: "basketbal" },
                 { tekst: "Een shirt voor arm!", volgende: "armshirt" },
                 { tekst: "Een ander mysterieus item...", volgende: "kleding" }
             ]
@@ -160,16 +190,16 @@
         denim_cadeaus: {
             tekst: "Prima als je voor dat denim pakje gaat, maar dan moet je niet gek opkijken als hij in z'n HEMA pyjama opdaagt! Maar goed, het is tijd voor: een cadeautje!!",
             keuzes: [
-                { tekst: "Ik wil een sportief cadeau!", volgende: "boutique" },
+                { tekst: "Ik wil een sportief cadeau!", volgende: "basketbal" },
                 { tekst: "Een nieuw shirt voor arm, dat is wat ik wil!", volgende: "armshirt" },
                 { tekst: "Ik wil een ander mysterieus item...", volgende: "kleding" }
               ]
         },
       
-      boutique: {
+      basketbal: {
         tekst: "Alright je kiest wel meteen het grootste pakket! Eens kijken of deze vent wat leuks wist te scoren...!",
         keuzes: [
-          { tekst: "WAT!!! Deze wilde ik zoooo graag. Ik kan niet geloven dat hij dit gewoon heeft gehaald voor me. Is er nog meer!? Ik wil direct nog een cadeau openen! MEER MEER MEEEER.", volgende: "extra_boutique" },
+          { tekst: "WAT!!! Deze wilde ik zoooo graag. Ik kan niet geloven dat hij dit gewoon heeft gehaald voor me. Is er nog meer!? Ik wil direct nog een cadeau openen! MEER MEER MEEEER.", volgende: "extra_basketbal" },
           { tekst: "O-M-G, de GIANNIS IMMORTALITY 4 PAARS. PRECIES wat ik wilde....!!!?? Ik vind het prachtig, máár ik bewaar de andere cadeaus nog even voor later. Tijd voor die bruiloft!!", volgende: "bachelor" },
         ]
         },
@@ -197,7 +227,7 @@
                 { tekst: "Ik ga samen met mijn fashion queens Mama, Luna en Milou shoppen en langs allemaal leuke hippe winkeltjes in Amsterdam. Onderweg maken we even een foto van de 9 straatjes voor Henk, dit is echt een hidden gem in Amsterdam!"  , volgende: "milou" },
             ]
         },
-      extra_boutique: {
+      extra_basketbal: {
         tekst: "Oke Oke, je wilt meteen nog meer cadeaus uitpakken. Wat kies je deze keer?",
         keuzes: [
           { tekst: "Shirt voor Arm natuurlijk!! My son needs it", volgende: "armshirt2" },
@@ -208,14 +238,14 @@
             tekst: "Na deze sentimentale keuze ben je toe aan nog een cadeau, wat ga je nu kiezen?",
             keuzes: [
             { tekst: "KOM MAAR DOOR met dat mysterieuze pakket... ik tril helemaal van enthousiasme.", volgende: "kleding2" },
-            { tekst: "Ik blijf van spulletjes houden, geef me dat cadeau van die fantastische winkel.", volgende: "boutique2" },
+            { tekst: "Ik blijf van spulletjes houden, geef me dat cadeau van die fantastische winkel.", volgende: "basketbal2" },
             ]
         },
       extra_kleding: {     
         tekst: "Die hadden we wel zien aankomen, jij kan nooit wachten met cadeaus. Nou goed, je kan je dus echt niet inhouden om nu nog een cadeau uit te pakken. Dus kies je...",
         keuzes: [
           { tekst: "Het t-shirt voor Armpje. Hij is echt toe aan een nieuw shirt, kom maar jongen. We gaan het regelen", volgende: "armshirt2" },
-          { tekst: "Het grootste cadeau! Ik ben zo benieuwd wat er in zit!", volgende: "boutique2" },
+          { tekst: "Het grootste cadeau! Ik ben zo benieuwd wat er in zit!", volgende: "basketbal2" },
         ]
       },
         armshirt2: {
@@ -236,7 +266,7 @@
                 { tekst: "Ik ga samen met mijn fashion queens Mama, Luna en Milou shoppen en langs allemaal leuke hippe winkeltjes in Amsterdam. Onderweg maken we even een foto van de 9 straatjes voor Henk, dit is echt een hidden gem in Amsterdam!"  , volgende: "milou" },
             ]
         },
-        boutique2: {
+        basketbal2: {
             tekst: "Oh en HOE ik hier eurosteps al GIANNIS ga maken. Ik ben zo blij met dit cadeau, ik kan niet wachten om het te gebruiken. Maar goed, we gaan nu verder met de bruiloft. Tijd voor je bachelorotte! Wat ga je doen?",
             keuzes: [
                 { tekst: "We gaan allemaal in matching outfits door de stad lopen met beschamende t-shirts. Vervolgens gaan we karaoke zingen en twerken net als Marcella!", volgende: "Marcella" },
@@ -484,7 +514,7 @@
             ]
         },
         einde: {
-            tekst: "Hee Bo, je mag nog even je resterende cadeau(s) openen! Dit is het einde van jouw verhaal, maar je kunt altijd opnieuw beginnen en andere keuzes maken. Bedankt voor het spelen. Happy Birthday aapje",
+            tekst: "Lieve Bo, je mag nog even je resterende cadeau(s) openen! Dit is het einde van jouw verhaal, maar je kunt altijd opnieuw beginnen en andere keuzes maken. Bedankt voor het spelen. Happy Birthday aapje",
             keuzes: [
                 { tekst: "Opnieuw spelen", volgende: "start" },
             ]
